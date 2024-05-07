@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://be64sji6wipm8"]
+
+[ext_resource type="Texture2D" uid="uid://c8v6l7c54g42c" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f0.png" id="1_ey5hg"]
+[ext_resource type="Script" path="res://enemy/enemy_script.gd" id="1_p6p8b"]
+[ext_resource type="Texture2D" uid="uid://lld83io8w8ry" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f1.png" id="2_1dhdb"]
+[ext_resource type="Texture2D" uid="uid://bddly8tqodxwl" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f2.png" id="3_r61jo"]
+[ext_resource type="Texture2D" uid="uid://doo4ibj2pfc1a" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_demon_run_anim_f3.png" id="4_u6j13"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gsma7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4qxri"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ey5hg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1dhdb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_r61jo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u6j13")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="Demon" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_p6p8b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_gsma7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4qxri")
+animation = &"run"
+frame_progress = 0.230827
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

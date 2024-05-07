@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqp2exi55b6rx"]
+
+[ext_resource type="Texture2D" uid="uid://lxwavaljil0o" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f0.png" id="1_05vki"]
+[ext_resource type="Script" path="res://body/player.gd" id="1_jsqi1"]
+[ext_resource type="Texture2D" uid="uid://3ghgyva1hn61" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_m_idle_anim_f0.png" id="1_wavx6"]
+[ext_resource type="Texture2D" uid="uid://d1ljcjekgjovt" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f1.png" id="2_wsqis"]
+[ext_resource type="Texture2D" uid="uid://dsva1gbxgolqa" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_hit_anim_f0.png" id="2_yc834"]
+[ext_resource type="Texture2D" uid="uid://drkhisobomum" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f2.png" id="3_ermg4"]
+[ext_resource type="Texture2D" uid="uid://dfpuludyvvs0" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f3.png" id="4_1aeyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdfnu"]
+size = Vector2(17, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8bk73"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wavx6")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yc834")
+}],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_05vki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_wsqis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ermg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1aeyt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="player" type="CharacterBody2D"]
+collision_mask = 6
+script = ExtResource("1_jsqi1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 3.5)
+shape = SubResource("RectangleShape2D_fdfnu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_8bk73")
+animation = &"attack"
+autoplay = "idle"

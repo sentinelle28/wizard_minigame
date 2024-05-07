@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://vhls8wh6rysf"]
+
+[ext_resource type="PackedScene" uid="uid://caqxu8hvrapgi" path="res://enemy/template_enemy.tscn" id="1_vwn0x"]
+[ext_resource type="Texture2D" uid="uid://bp7vi70fq26ob" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f0.png" id="2_21wbg"]
+[ext_resource type="Texture2D" uid="uid://cma6be4r016d2" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f1.png" id="3_cx6ws"]
+[ext_resource type="Texture2D" uid="uid://dlml0hf8erb83" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f2.png" id="4_kpx4g"]
+[ext_resource type="Texture2D" uid="uid://dl7ksax5as625" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f3.png" id="5_pe563"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_330ew"]
+size = Vector2(18, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xljuw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_21wbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cx6ws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kpx4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pe563")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[node name="zombie" instance=ExtResource("1_vwn0x")]
+moon_weakness_mult = 1
+fire_weakness_mult = 2
+nature_weakness_mult = 0
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_330ew")
+
+[node name="AnimatedSprite2D" parent="." index="2"]
+sprite_frames = SubResource("SpriteFrames_xljuw")
+animation = &"run"
+autoplay = "run"

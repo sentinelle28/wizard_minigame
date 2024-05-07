@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://r66hxggjnjcy"]
+
+[ext_resource type="Script" path="res://menu/main.gd" id="1_i2tva"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_i2tva")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 518.0
+offset_top = 178.0
+offset_right = 727.0
+offset_bottom = 276.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
