@@ -2,8 +2,7 @@ extends Node2D
 
 @export var player:CharacterBody2D
 
-func _ready():
-	activate("demon")
+
 
 func activate(type):
 	var new_enemy = load(EnemyRef.monster[type]).instantiate()
