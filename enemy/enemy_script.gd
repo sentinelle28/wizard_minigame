@@ -30,7 +30,7 @@ func _process(delta):
 func take_dmg(dmg,type):
 	health -= find_type(type)*dmg
 	if health<= 0:
-		PlayerPoint.point += point_dropped * PlayerPoint.current_mult
+		PlayerPoint.add_point(point_dropped)
 		queue_free()
 	
 func find_type(type):

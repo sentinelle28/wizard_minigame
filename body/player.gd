@@ -1,10 +1,6 @@
 extends CharacterBody2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
+@export var spawn_location : Array[Node2D]
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -18,3 +14,12 @@ func change_direction():
 		$AnimatedSprite2D.flip_h = false
 	
 	
+func shoot():
+	if Input.is_action_just_pressed("ui_accept"):
+		spawn_location.sort_custom(sort_distance)
+		#projectile spawn
+		
+		
+func sort_distance(a,b):
+	var mouse_pos = get_global_mouse_position()
+	return a.global_position.distance_to(mouse_pos) < b.global_position.distance_to(mouse_pos)
