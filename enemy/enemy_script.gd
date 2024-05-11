@@ -37,7 +37,8 @@ func find_type(type):
 	match type:
 		"fire":
 			return fire_weakness_mult
-		"elec":
+		"freeze":
+			speed *= 0.8
 			return elec_weakness_mult
 		"nature":
 			return nature_weakness_mult
