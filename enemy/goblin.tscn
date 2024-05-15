@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dvmyr5k0p2ugf"]
+[gd_scene load_steps=9 format=3 uid="uid://dvmyr5k0p2ugf"]
 
 [ext_resource type="PackedScene" uid="uid://caqxu8hvrapgi" path="res://enemy/template_enemy.tscn" id="1_0r3e0"]
 [ext_resource type="Texture2D" uid="uid://e2lnwfhhufvy" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/goblin_run_anim_f0.png" id="2_71hu2"]
@@ -29,6 +29,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4yl4"]
+size = Vector2(10, 10)
+
 [node name="goblin" instance=ExtResource("1_0r3e0")]
 health = 1
 speed = 250
@@ -42,3 +45,7 @@ shape = SubResource("RectangleShape2D_vg1vw")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_j8y6d")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_g4yl4")

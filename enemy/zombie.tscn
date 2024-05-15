@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://vhls8wh6rysf"]
+[gd_scene load_steps=9 format=3 uid="uid://vhls8wh6rysf"]
 
 [ext_resource type="PackedScene" uid="uid://caqxu8hvrapgi" path="res://enemy/template_enemy.tscn" id="1_vwn0x"]
 [ext_resource type="Texture2D" uid="uid://bp7vi70fq26ob" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/big_zombie_run_anim_f0.png" id="2_21wbg"]
@@ -29,6 +29,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_001at"]
+size = Vector2(18, 26)
+
 [node name="zombie" instance=ExtResource("1_vwn0x")]
 moon_weakness_mult = 1
 fire_weakness_mult = 2
@@ -42,3 +45,7 @@ shape = SubResource("RectangleShape2D_330ew")
 sprite_frames = SubResource("SpriteFrames_xljuw")
 animation = &"run"
 autoplay = "run"
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_001at")

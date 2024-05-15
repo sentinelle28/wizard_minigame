@@ -1,11 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://creecav02o0rb"]
+[gd_scene load_steps=17 format=3 uid="uid://creecav02o0rb"]
 
 [ext_resource type="Texture2D" uid="uid://cp5n4ps2uirsm" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="1_3c648"]
 [ext_resource type="Texture2D" uid="uid://dkx321koedb1i" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="2_i8gsu"]
 [ext_resource type="PackedScene" uid="uid://bqp2exi55b6rx" path="res://body/player.tscn" id="3_4k5m5"]
+[ext_resource type="Script" path="res://body/heartcontainer.gd" id="4_aexvi"]
 [ext_resource type="Texture2D" uid="uid://b0vd4ddd3osii" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/ui_heart_empty.png" id="4_s43n7"]
 [ext_resource type="Texture2D" uid="uid://vv4jfuogdcby" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/ui_heart_full.png" id="5_nrwo0"]
 [ext_resource type="PackedScene" uid="uid://bdlyqd7w6g4v4" path="res://body/spawner.tscn" id="6_fenbr"]
+[ext_resource type="Script" path="res://body/spawner_controller.gd" id="6_rjb1x"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq0lo"]
 
@@ -441,6 +443,7 @@ offset_right = 498.0
 offset_bottom = 229.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("4_aexvi")
 
 [node name="heart" type="AnimatedSprite2D" parent="heartcontainer"]
 z_index = 6
@@ -461,6 +464,7 @@ sprite_frames = SubResource("SpriteFrames_4c8vs")
 animation = &"1heart"
 
 [node name="spawner_controller" type="Node2D" parent="."]
+script = ExtResource("6_rjb1x")
 
 [node name="spawner_left" parent="spawner_controller" node_paths=PackedStringArray("player") instance=ExtResource("6_fenbr")]
 position = Vector2(151, 327)

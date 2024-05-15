@@ -19,6 +19,9 @@ config/icon="res://icon.svg"
 
 EnemyRef="*res://autolaud/enemy_ref.gd"
 PlayerPoint="*res://autolaud/point.gd"
+Wave="*res://autolaud/wave.gd"
+Health="*res://autolaud/health.gd"
+Currentspell="*res://autolaud/currentspell.gd"
 
 [layer_names]
 

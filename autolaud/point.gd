@@ -10,7 +10,7 @@ func reset():
 
 func add_point(points):
 	point += points * current_mult
-	time_left_to_reset = 3
+	time_left_to_reset = 3 + 3*current_mult/100
 	current_mult += 0.1
 
 func _process(delta):

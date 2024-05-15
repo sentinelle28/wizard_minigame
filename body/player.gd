@@ -23,3 +23,6 @@ func shoot():
 func sort_distance(a,b):
 	var mouse_pos = get_global_mouse_position()
 	return a.global_position.distance_to(mouse_pos) < b.global_position.distance_to(mouse_pos)
+
+func take_dmg(dmg):
+	Health.change_health(dmg)
