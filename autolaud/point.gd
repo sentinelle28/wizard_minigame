@@ -1,6 +1,7 @@
 extends Node
 
 var point = 0
+var highscore = 0
 var time_left_to_reset = 0
 var current_mult = 1
 

@@ -19,7 +19,7 @@ var list_of_weakness
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nav.target_position = player.global_position
-	
+	Health.connect("take_dmg",repise)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,5 +48,10 @@ func find_type(type):
 
 func _on_area_2d_body_entered(body):
 	if body.name == "player":
+		
 		body.take_dmg(1)
 		queue_free()
+		
+
+func repise():
+	queue_free()
