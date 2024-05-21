@@ -17,24 +17,31 @@ func _process(_delta):
 		$AnimationPlayer.play("death_menu_open")
 		if PlayerPoint.highscore < PlayerPoint.point:
 			PlayerPoint.highscore = PlayerPoint.point
-		score_label.text = String(PlayerPoint.point)
-		higscore_label.text = String(PlayerPoint.highscore)
+		score_label.text = str(PlayerPoint.point)
+		higscore_label.text = str(PlayerPoint.highscore)
 		is_loaded = true
 	
 	
 
 
 func _on_texture_button_pressed():
-	$AnimationPlayer.play("RESET")
+	#texture reset
+	$AnimationPlayer.play("retry")
 	is_loaded = false
+	#scene reset
 	Wave.is_playing = true
 	Wave.is_continuing = true
 	Health.health = 3
+	#no bullet
 	for child in player.get_children():
 		if child is bullet_player:
 			player.remove_child(child)
-			
 	
+	#score reset
+	PlayerPoint.point = 0
+	PlayerPoint.reset()
 	
+	#tree reset
 	get_tree().paused = false
+	#wave reset
 	spawner.reset()
