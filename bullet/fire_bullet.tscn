@@ -486,6 +486,7 @@ _data = {
 z_index = 1
 type = "fire"
 damage = 10.0
+SPEED = 500
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_dtwg5")

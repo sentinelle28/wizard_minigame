@@ -7,6 +7,7 @@ extends CanvasLayer
 @export_group("game")
 @export var spawner:Node2D
 @export var player:CharacterBody2D
+@export var hearth_container:HBoxContainer
 
 # Called when the node enters the scene tree for the first time.
 var is_loaded = false
@@ -26,7 +27,7 @@ func _process(_delta):
 
 func _on_texture_button_pressed():
 	#texture reset
-	$AnimationPlayer.play("retry")
+	visible = false
 	is_loaded = false
 	#scene reset
 	Wave.is_playing = true
@@ -44,4 +45,5 @@ func _on_texture_button_pressed():
 	#tree reset
 	get_tree().paused = false
 	#wave reset
+	hearth_container.reset()
 	spawner.reset()

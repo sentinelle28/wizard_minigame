@@ -447,14 +447,18 @@ radius = 38.1182
 [node name="moon_bullet" instance=ExtResource("1_5ddvx")]
 type = "moon"
 damage = 10.0
-SPEED = 400.0
+SPEED = 700
 
 [node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_n6ecw")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_s3d5f")
+autoplay = "default"
 frame_progress = 0.512121
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_w00tq")

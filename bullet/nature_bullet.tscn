@@ -656,13 +656,19 @@ radius = 36.1248
 
 [node name="nature_bullet" instance=ExtResource("1_eqmvg")]
 type = "nature"
+damage = 10.0
+SPEED = 600
 
 [node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_oyqdn")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_mphkw")
+autoplay = "default"
 frame_progress = 0.356433
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.6, 0.6)
 shape = SubResource("CircleShape2D_e843f")

@@ -752,7 +752,7 @@ player = NodePath("../../player")
 position = Vector2(1123, 324)
 player = NodePath("../../player")
 
-[node name="death_menu" type="CanvasLayer" parent="." node_paths=PackedStringArray("higscore_label", "score_label", "spawner", "player")]
+[node name="death_menu" type="CanvasLayer" parent="." node_paths=PackedStringArray("higscore_label", "score_label", "spawner", "player", "hearth_container")]
 process_mode = 2
 visible = false
 script = ExtResource("9_lnpsk")
@@ -760,12 +760,20 @@ higscore_label = NodePath("Panel/high_container/point_high")
 score_label = NodePath("Panel/current_container/point_current")
 spawner = NodePath("../spawner_controller")
 player = NodePath("../player")
+hearth_container = NodePath("../heartcontainer")
 
 [node name="Panel" type="Panel" parent="death_menu"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = 339.0
 offset_top = 324.0
 offset_right = 765.0
 offset_bottom = 331.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Label" type="Label" parent="death_menu/Panel"]
 visible = false

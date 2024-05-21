@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func _on_area_2d_body_entered(body):
-	if body.name != "player" and body is enemy:
+	if body.name != "player" and body is enemy and not body is bullet_player:
 		body.take_dmg(damage,type)
 		emit_signal("death")
 		await get_tree().create_timer(time_before_death).timeout

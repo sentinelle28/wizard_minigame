@@ -15,3 +15,8 @@ func _process(_delta):
 		list_child[1].hide()
 	elif Health.health == 0:
 		list_child[0].hide()
+		get_tree().paused = true
+
+func reset():
+	for child in list_child:
+		child.show()
