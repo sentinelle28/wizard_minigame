@@ -45,5 +45,6 @@ func _on_texture_button_pressed():
 	#tree reset
 	get_tree().paused = false
 	#wave reset
+	player.reset()
 	hearth_container.reset()
 	spawner.reset()

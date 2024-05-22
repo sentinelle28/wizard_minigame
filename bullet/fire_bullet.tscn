@@ -489,13 +489,18 @@ damage = 10.0
 SPEED = 500
 
 [node name="CollisionShape2D" parent="." index="0"]
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_dtwg5")
 
 [node name="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_b2mqi")
 frame_progress = 0.949346
 
+[node name="Area2D" parent="." index="2"]
+scale = Vector2(0.9, 0.9)
+
 [node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.9, 0.9)
 shape = SubResource("CircleShape2D_55417")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]

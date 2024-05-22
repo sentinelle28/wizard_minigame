@@ -53,3 +53,10 @@ func sort_distance(a,b):
 
 func take_dmg(dmg):
 	Health.change_health(dmg)
+	if Health.health > 1:
+		$AnimationPlayer.play("hurt")
+	else:
+		$AnimationPlayer.play("critacally_hurt")
+
+func reset():
+	$AnimationPlayer.play("RESET")
