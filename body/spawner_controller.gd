@@ -1,7 +1,7 @@
 extends Node2D
 
 var child_list = []
-
+@export var wave_displayer:AnimatedSprite2D
 
 func _ready():
 	for child in get_children():
@@ -34,5 +34,10 @@ func reset():
 	
 	
 	for i in range(20):
+		wave_displayer.set_frame_and_progress(i,0)
+		
+		
 		start_wave(i)
-		await get_tree().create_timer(randf_range(1.0,3.0)).timeout  
+		await get_tree().create_timer(randf_range(5.0,7.0)).timeout  
+		if Wave.is_continuing == false:
+			break

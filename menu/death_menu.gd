@@ -9,6 +9,7 @@ extends CanvasLayer
 @export var player:CharacterBody2D
 @export var hearth_container:HBoxContainer
 
+
 # Called when the node enters the scene tree for the first time.
 var is_loaded = false
 

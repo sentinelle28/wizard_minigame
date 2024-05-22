@@ -28,18 +28,18 @@ func _process(delta):
 	translate(direction*delta*speed)
 	
 func take_dmg(dmg,type):
-	if find_type(type)*dmg == 0:
+	var dmg_received = find_type(type)*dmg 
+	if dmg_received == 0:
 		var immune = load("res://body/immune_label.tscn").instantiate()
 		add_child(immune)
 		immune.global_position = global_position + Vector2(0,-10)
 	
-	
-	health -= find_type(type)*dmg
-	
-	$AnimationPlayer.play("hurt")
-	if health<= 0:
-		PlayerPoint.add_point(point_dropped)
-		queue_free()
+	else:
+		health -= find_type(type)*dmg
+		$AnimationPlayer.play("hurt")
+		if health<= 0:
+			PlayerPoint.add_point(point_dropped)
+			queue_free()
 	
 func find_type(type):
 	match type:
