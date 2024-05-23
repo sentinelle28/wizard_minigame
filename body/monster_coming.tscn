@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuebesotg7o7r"]
+
+[ext_resource type="Texture2D" uid="uid://buy423gs5kg8h" path="res://asset/mainscene/monster_coming.png" id="1_offlm"]
+
+[node name="monster_coming" type="Sprite2D"]
+texture = ExtResource("1_offlm")

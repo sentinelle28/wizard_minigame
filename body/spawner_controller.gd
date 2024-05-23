@@ -17,9 +17,13 @@ func start_wave(n):
 	waver.wave_content["orc"])
 	while copy_wave.sum_enemy() > 0 and Wave.is_continuing:
 		if Wave.is_playing:
-			child_list.pick_random().activate(copy_wave.spawn_a_mob())
+			var spawner_choosed = child_list.pick_random()
+			$"../monster_coming_animator".play(spawner_choosed.name)
+			spawner_choosed.activate(copy_wave.spawn_a_mob())
 			await get_tree().create_timer(randf_range(1.0,3.0)).timeout 
 		else:
+			$"../monster_coming_animator".stop()
+			$"../monster_coming_animator".play("true_reset")
 			await get_tree().create_timer(2).timeout
 			Wave.is_playing = true
 
@@ -38,6 +42,8 @@ func reset():
 		
 		
 		start_wave(i)
-		await get_tree().create_timer(randf_range(5.0,7.0)).timeout  
 		if Wave.is_continuing == false:
 			break
+		await get_tree().create_timer(randf_range(5.0,7.0)).timeout  
+		$"../wave_animator".play("changing_wave")
+		await get_tree().create_timer(1.6).timeout
