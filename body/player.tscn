@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bqp2exi55b6rx"]
+[gd_scene load_steps=15 format=3 uid="uid://bqp2exi55b6rx"]
 
 [ext_resource type="Texture2D" uid="uid://lxwavaljil0o" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f0.png" id="1_05vki"]
 [ext_resource type="Script" path="res://body/player.gd" id="1_jsqi1"]
@@ -61,6 +61,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ys80g"]
 resource_name = "critacally_hurt"
@@ -95,15 +107,43 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 0.0117647, 0.00392157, 1), Color(1, 1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_x7yna"]
+resource_name = "death"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktaap"]
 _data = {
 "RESET": SubResource("Animation_v8rrb"),
 "critacally_hurt": SubResource("Animation_ys80g"),
+"death": SubResource("Animation_x7yna"),
 "hurt": SubResource("Animation_tb7uc")
 }
 
 [node name="player" type="CharacterBody2D"]
-self_modulate = Color(1, 0.388235, 0.443137, 1)
 collision_mask = 6
 script = ExtResource("1_jsqi1")
 

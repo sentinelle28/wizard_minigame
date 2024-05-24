@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @export var spawn_location : Array[Node2D]
+@onready var animator = $AnimationPlayer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -59,4 +60,5 @@ func take_dmg(dmg):
 		$AnimationPlayer.play("critacally_hurt")
 
 func reset():
+	show()
 	$AnimationPlayer.play("RESET")

@@ -30,10 +30,7 @@ func start_wave(n):
 	
 
 func reset():
-	for child in child_list:
-		for enemy_child in child.get_children():
-			if enemy_child is enemy:
-				child.remove_child(enemy_child)
+	
 	
 	
 	
@@ -44,6 +41,13 @@ func reset():
 		start_wave(i)
 		if Wave.is_continuing == false:
 			break
-		await get_tree().create_timer(randf_range(5.0,7.0)).timeout  
+		await get_tree().create_timer(randf_range(10.0,12.0)).timeout  
 		$"../wave_animator".play("changing_wave")
 		await get_tree().create_timer(1.6).timeout
+
+func clear_enemy():
+	for child in child_list:
+		for enemy_child in child.get_children():
+			if enemy_child is enemy:
+				child.remove_child(enemy_child)
+

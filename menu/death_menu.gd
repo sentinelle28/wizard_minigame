@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Control
 
 @export_group("score")
 @export var higscore_label:Label
@@ -34,10 +34,7 @@ func _on_texture_button_pressed():
 	Wave.is_playing = true
 	Wave.is_continuing = true
 	Health.health = 3
-	#no bullet
-	for child in player.get_children():
-		if child is bullet_player:
-			player.remove_child(child)
+	
 	
 	#score reset
 	PlayerPoint.point = 0

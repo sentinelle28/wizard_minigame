@@ -819,6 +819,21 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="Animation" id="Animation_htgdf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wawe_displayer:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_d4lr1"]
 resource_name = "changing_wave"
 length = 1.6
@@ -833,21 +848,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_htgdf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("wawe_displayer:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgp06"]
@@ -907,13 +907,13 @@ tracks/3/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_enxc5"]
-resource_name = "spawner_left"
+[sub_resource type="Animation" id="Animation_2vf83"]
+resource_name = "spawner_bottom"
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("monster_coming_holder/monster_coming_left:self_modulate")
+tracks/0/path = NodePath("monster_coming_holder/monster_coming_down:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -923,13 +923,13 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_2vf83"]
-resource_name = "spawner_bottom"
+[sub_resource type="Animation" id="Animation_enxc5"]
+resource_name = "spawner_left"
 length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("monster_coming_holder/monster_coming_down:self_modulate")
+tracks/0/path = NodePath("monster_coming_holder/monster_coming_left:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1065,7 +1065,7 @@ position = Vector2(15, 8)
 position = Vector2(552, 327)
 zoom = Vector2(2.7, 2)
 
-[node name="heartcontainer" type="HBoxContainer" parent="."]
+[node name="heartcontainer" type="HBoxContainer" parent="." node_paths=PackedStringArray("player", "spawner")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -1078,22 +1078,27 @@ offset_bottom = 229.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4_aexvi")
+player = NodePath("../player")
+spawner = NodePath("../spawner_controller")
 
 [node name="heart" type="AnimatedSprite2D" parent="heartcontainer"]
 z_index = 6
-position = Vector2(23, 20)
+position = Vector2(25.7083, 22.5)
+scale = Vector2(1.41667, 1.41667)
 sprite_frames = SubResource("SpriteFrames_4c8vs")
 animation = &"1heart"
 
 [node name="heart2" type="AnimatedSprite2D" parent="heartcontainer"]
 z_index = 6
-position = Vector2(46, 20)
+position = Vector2(50.708, 22.5)
+scale = Vector2(1.41667, 1.41667)
 sprite_frames = SubResource("SpriteFrames_4c8vs")
 animation = &"1heart"
 
 [node name="heart3" type="AnimatedSprite2D" parent="heartcontainer"]
 z_index = 6
-position = Vector2(67, 20)
+position = Vector2(75.708, 22.5)
+scale = Vector2(1.41667, 1.41667)
 sprite_frames = SubResource("SpriteFrames_4c8vs")
 animation = &"1heart"
 
@@ -1117,9 +1122,12 @@ player = NodePath("../../player")
 position = Vector2(966, 326)
 player = NodePath("../../player")
 
-[node name="death_menu" type="CanvasLayer" parent="." node_paths=PackedStringArray("higscore_label", "score_label", "spawner", "player", "hearth_container")]
+[node name="death_menu" type="Control" parent="." node_paths=PackedStringArray("higscore_label", "score_label", "spawner", "player", "hearth_container")]
 process_mode = 2
 visible = false
+z_index = 1
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("9_lnpsk")
 higscore_label = NodePath("Panel/high_container/point_high")
 score_label = NodePath("Panel/current_container/point_current")
@@ -1128,14 +1136,16 @@ player = NodePath("../player")
 hearth_container = NodePath("../heartcontainer")
 
 [node name="Panel" type="Panel" parent="death_menu"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -237.0
-offset_right = 189.0
-offset_bottom = 7.0
+offset_left = 339.0
+offset_top = 324.0
+offset_right = 765.0
+offset_bottom = 331.0
 grow_horizontal = 2
 grow_vertical = 2
 
