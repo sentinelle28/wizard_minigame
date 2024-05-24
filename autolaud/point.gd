@@ -15,7 +15,10 @@ func add_point(points):
 	current_mult += 0.1
 
 func _process(delta):
-	time_left_to_reset -= delta
-	if time_left_to_reset <= 0:
-		reset()
+	
+	if Wave.is_playing:
+		time_left_to_reset -= delta
+		if time_left_to_reset <= 0:
+			reset()
+	
 	

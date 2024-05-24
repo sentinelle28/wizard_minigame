@@ -41,9 +41,12 @@ func reset():
 		start_wave(i)
 		if Wave.is_continuing == false:
 			break
+		Wave.is_playing = false
+		
 		await get_tree().create_timer(randf_range(10.0,12.0)).timeout  
 		$"../wave_animator".play("changing_wave")
 		await get_tree().create_timer(1.6).timeout
+		Wave.is_playing = true
 
 func clear_enemy():
 	for child in child_list:
