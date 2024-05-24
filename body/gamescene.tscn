@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://creecav02o0rb"]
+[gd_scene load_steps=62 format=3 uid="uid://creecav02o0rb"]
 
 [ext_resource type="Texture2D" uid="uid://cp5n4ps2uirsm" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="1_3c648"]
 [ext_resource type="Texture2D" uid="uid://dkx321koedb1i" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="2_i8gsu"]
@@ -12,6 +12,9 @@
 [ext_resource type="Script" path="res://menu/death_menu.gd" id="9_lnpsk"]
 [ext_resource type="Texture2D" uid="uid://b02nse8h08n34" path="res://asset/mainscene/wave-art.png" id="11_ljjhr"]
 [ext_resource type="PackedScene" uid="uid://cuebesotg7o7r" path="res://body/monster_coming.tscn" id="12_whtb5"]
+[ext_resource type="Texture2D" uid="uid://bgrktbh0f30gp" path="res://asset/mainscene/multiplicator.png" id="13_1hbl6"]
+[ext_resource type="Script" path="res://body/multiplicator.gd" id="13_6hh75"]
+[ext_resource type="Texture2D" uid="uid://bbf3dgkamrj22" path="res://asset/mainscene/multiplicator_progress.png" id="14_f7hfk"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq0lo"]
 
@@ -1033,6 +1036,43 @@ _data = {
 "true_reset": SubResource("Animation_rcsh5")
 }
 
+[sub_resource type="Animation" id="Animation_cun6c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mult/TextureProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qd21c"]
+resource_name = "mult_progress"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("mult/TextureProgressBar:tint_progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 0.592157, 0, 1), Color(1, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ig206"]
+_data = {
+"RESET": SubResource("Animation_cun6c"),
+"mult_progress": SubResource("Animation_qd21c")
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1258,6 +1298,43 @@ rotation = 3.14159
 [node name="monster_coming_animator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_52mds")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." node_paths=PackedStringArray("point_label", "mult_label", "text_rect", "animator")]
+z_index = 1
+offset_left = 629.0
+offset_top = 191.0
+offset_right = 764.0
+offset_bottom = 277.0
+theme_override_constants/separation = 15
+script = ExtResource("13_6hh75")
+point_label = NodePath("point_displayer")
+mult_label = NodePath("mult/multiplicator")
+text_rect = NodePath("mult/TextureProgressBar")
+animator = NodePath("progressbar")
+
+[node name="point_displayer" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ddd"
+
+[node name="mult" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/mult"]
+z_index = 1
+layout_mode = 2
+max_value = 3.5
+step = 0.1
+fill_mode = 3
+texture_over = ExtResource("13_1hbl6")
+texture_progress = ExtResource("14_f7hfk")
+
+[node name="multiplicator" type="Label" parent="VBoxContainer/mult"]
+layout_mode = 2
+
+[node name="progressbar" type="AnimationPlayer" parent="VBoxContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_ig206")
 }
 
 [connection signal="pressed" from="death_menu/Panel/TextureButton" to="death_menu" method="_on_texture_button_pressed"]
