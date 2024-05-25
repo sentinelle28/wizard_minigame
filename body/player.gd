@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var spawn_location : Array[Node2D]
 @onready var animator = $AnimationPlayer
 @export var spellsound : AudioStreamPlayer
+@export var current_spell:AnimatedSprite2D
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -26,6 +27,7 @@ func update_spell():
 		Currentspell.currentspell += 1
 		if Currentspell.currentspell > 3 :
 			Currentspell.currentspell = 0
+	current_spell.set_frame_and_progress(Currentspell.currentspell,0)
 	
 	
 func shoot():
