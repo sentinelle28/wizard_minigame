@@ -5,7 +5,7 @@ extends VBoxContainer
 @export var animator :AnimationPlayer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	var point = str(PlayerPoint.point)
 	if len(point) < 8:
 		var miss_text = ""

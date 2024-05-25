@@ -28,6 +28,7 @@ func _process(delta):
 	translate(direction*delta*speed)
 	
 func take_dmg(dmg,type):
+	EnemyHurt.play()
 	var dmg_received = find_type(type)*dmg 
 	if dmg_received == 0:
 		var immune = load("res://body/immune_label.tscn").instantiate()

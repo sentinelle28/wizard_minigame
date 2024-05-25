@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export var spawn_location : Array[Node2D]
 @onready var animator = $AnimationPlayer
+@export var spellsound : AudioStreamPlayer
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -29,6 +30,8 @@ func update_spell():
 	
 func shoot():
 	if Input.is_action_just_pressed("shoot"):
+		spellsound.stop()
+		spellsound.play()
 		spawn_location.sort_custom(sort_distance)
 		#projectile spawn
 		var bullet = load(Currentspell.spell_ref[Currentspell.currentspell]).instantiate()

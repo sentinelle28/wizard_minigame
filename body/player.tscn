@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bqp2exi55b6rx"]
+[gd_scene load_steps=17 format=3 uid="uid://bqp2exi55b6rx"]
 
 [ext_resource type="Texture2D" uid="uid://lxwavaljil0o" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f0.png" id="1_05vki"]
 [ext_resource type="Script" path="res://body/player.gd" id="1_jsqi1"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dsva1gbxgolqa" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_hit_anim_f0.png" id="2_yc834"]
 [ext_resource type="Texture2D" uid="uid://drkhisobomum" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f2.png" id="3_ermg4"]
 [ext_resource type="Texture2D" uid="uid://dfpuludyvvs0" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/wizzard_f_idle_anim_f3.png" id="4_1aeyt"]
+[ext_resource type="AudioStream" uid="uid://ckfkwy3jo4p2o" path="res://asset/audio/playerhurt.wav" id="8_v4rml"]
+[ext_resource type="AudioStream" uid="uid://c7q3gyaquj1mj" path="res://asset/audio/launchspell.wav" id="9_kmgxa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdfnu"]
 size = Vector2(17, 21)
@@ -73,6 +75,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_ys80g"]
 resource_name = "critacally_hurt"
@@ -134,6 +148,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 0.0117647, 0.00392157, 1), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ktaap"]
 _data = {
@@ -143,9 +169,10 @@ _data = {
 "hurt": SubResource("Animation_tb7uc")
 }
 
-[node name="player" type="CharacterBody2D"]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("spellsound")]
 collision_mask = 6
 script = ExtResource("1_jsqi1")
+spellsound = NodePath("AudioStreamPlayer2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 3.5)
@@ -161,3 +188,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ktaap")
 }
 autoplay = "RESET"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_v4rml")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_kmgxa")
+volume_db = -3.525

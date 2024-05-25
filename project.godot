@@ -22,6 +22,7 @@ PlayerPoint="*res://autolaud/point.gd"
 Wave="*res://autolaud/wave.gd"
 Health="*res://autolaud/health.gd"
 Currentspell="*res://autolaud/currentspell.gd"
+EnemyHurt="*res://autolaud/enemy_hurt.tscn"
 
 [input]
 

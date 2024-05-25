@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://creecav02o0rb"]
+[gd_scene load_steps=64 format=3 uid="uid://creecav02o0rb"]
 
 [ext_resource type="Texture2D" uid="uid://cp5n4ps2uirsm" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_floor-16x16.png" id="1_3c648"]
 [ext_resource type="Texture2D" uid="uid://dkx321koedb1i" path="res://asset/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/atlas_walls_low-16x16.png" id="2_i8gsu"]
@@ -11,10 +11,12 @@
 [ext_resource type="Texture2D" uid="uid://qdyq5ngdojr6" path="res://asset/menu/start_again.png" id="9_jfrf4"]
 [ext_resource type="Script" path="res://menu/death_menu.gd" id="9_lnpsk"]
 [ext_resource type="Texture2D" uid="uid://b02nse8h08n34" path="res://asset/mainscene/wave-art.png" id="11_ljjhr"]
+[ext_resource type="AudioStream" uid="uid://cc55f7gqebjej" path="res://asset/audio/changing_wave.wav" id="12_rqhfy"]
 [ext_resource type="PackedScene" uid="uid://cuebesotg7o7r" path="res://body/monster_coming.tscn" id="12_whtb5"]
 [ext_resource type="Texture2D" uid="uid://bgrktbh0f30gp" path="res://asset/mainscene/multiplicator.png" id="13_1hbl6"]
 [ext_resource type="Script" path="res://body/multiplicator.gd" id="13_6hh75"]
 [ext_resource type="Texture2D" uid="uid://bbf3dgkamrj22" path="res://asset/mainscene/multiplicator_progress.png" id="14_f7hfk"]
+[ext_resource type="AudioStream" uid="uid://15iioy3eswpa" path="res://asset/audio/enemyhurt.wav" id="17_vem37"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lq0lo"]
 
@@ -836,6 +838,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wave_animator/AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_d4lr1"]
 resource_name = "changing_wave"
@@ -851,6 +865,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("wave_animator/AudioStreamPlayer:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bgp06"]
@@ -1274,6 +1300,10 @@ libraries = {
 "": SubResource("AnimationLibrary_bgp06")
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="wave_animator"]
+stream = ExtResource("12_rqhfy")
+volume_db = -15.0
+
 [node name="monster_coming_holder" type="Node2D" parent="."]
 
 [node name="monster_coming_up" parent="monster_coming_holder" instance=ExtResource("12_whtb5")]
@@ -1336,5 +1366,8 @@ layout_mode = 2
 libraries = {
 "": SubResource("AnimationLibrary_ig206")
 }
+
+[node name="enemy_hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_vem37")
 
 [connection signal="pressed" from="death_menu/Panel/TextureButton" to="death_menu" method="_on_texture_button_pressed"]

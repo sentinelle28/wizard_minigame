@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxcep4lpt3dmb"]
+
+[ext_resource type="AudioStream" uid="uid://15iioy3eswpa" path="res://asset/audio/enemyhurt.wav" id="1_kr7nb"]
+
+[node name="enemy_hurt" type="AudioStreamPlayer"]
+stream = ExtResource("1_kr7nb")
+volume_db = -10.0
