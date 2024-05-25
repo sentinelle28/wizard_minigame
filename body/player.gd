@@ -4,12 +4,18 @@ extends CharacterBody2D
 @onready var animator = $AnimationPlayer
 @export var spellsound : AudioStreamPlayer
 @export var current_spell:AnimatedSprite2D
+func _ready():
+	for child in get_children():
+		if child is Node2D:
+			spawn_location.append(child)
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	change_direction()
 	update_spell()
 	shoot()
+	main_menu()
 		
 func change_direction():
 	var direction = sign(global_position-get_global_mouse_position())
@@ -67,3 +73,19 @@ func take_dmg(dmg):
 func reset():
 	show()
 	$AnimationPlayer.play("RESET")
+
+func main_menu():
+	if Input.is_action_just_pressed("return"):
+		reset()
+		Wave.is_playing = true
+		Wave.is_continuing = true
+		Health.health = 3
+		
+		
+		#score reset
+		PlayerPoint.point = 0
+		PlayerPoint.reset()
+		
+		
+		
+		get_tree().change_scene_to_file("res://menu/main.tscn")

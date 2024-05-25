@@ -27,6 +27,10 @@ func _process(_delta):
 
 
 func _on_texture_button_pressed():
+	reset()
+
+
+func reset():
 	#texture reset
 	visible = false
 	is_loaded = false
