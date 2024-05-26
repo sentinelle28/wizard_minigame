@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://creecav02o0rb"]
+[gd_scene load_steps=69 format=3 uid="uid://creecav02o0rb"]
 
 [ext_resource type="PackedScene" uid="uid://cpes86qpjt8lw" path="res://body/map.tscn" id="1_5sjp2"]
 [ext_resource type="PackedScene" uid="uid://bqp2exi55b6rx" path="res://body/player.tscn" id="3_4k5m5"]
@@ -21,6 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://lhbu0oisjysr" path="res://asset/Free Pixel Effects Pack/12_nebula_spritesheet.png" id="19_jefgu"]
 [ext_resource type="Texture2D" uid="uid://on3oc7xjvylh" path="res://asset/Free Pixel Effects Pack/17_felspell_spritesheet.png" id="20_fhuui"]
 [ext_resource type="Texture2D" uid="uid://cqsa15mpq5mh0" path="res://asset/Free Pixel Effects Pack/19_freezing_spritesheet.png" id="21_jndwc"]
+[ext_resource type="AudioStream" uid="uid://mfqrycnmlrd8" path="res://asset/audio/sb_indreams(chosic.com).mp3" id="22_jsd1m"]
+[ext_resource type="Script" path="res://body/background.gd" id="23_p3y41"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4c8vs"]
 animations = [{
@@ -1052,4 +1054,9 @@ offset_right = 739.0
 offset_bottom = 481.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_2t2av")
 
+[node name="background" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_jsd1m")
+script = ExtResource("23_p3y41")
+
 [connection signal="pressed" from="death_menu/Panel/TextureButton" to="death_menu" method="_on_texture_button_pressed"]
+[connection signal="finished" from="background" to="background" method="_on_finished"]

@@ -5,6 +5,7 @@ extends Control
 @export var score_label:Label
 
 @export_group("game")
+@export var audio:AudioStreamPlayer
 @export var spawner:Node2D
 @export var player:CharacterBody2D
 @export var hearth_container:HBoxContainer
@@ -47,6 +48,7 @@ func reset():
 	#tree reset
 	get_tree().paused = false
 	#wave reset
+	audio.play()
 	player.reset()
 	hearth_container.reset()
 	spawner.reset()
