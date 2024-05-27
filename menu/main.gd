@@ -1,6 +1,6 @@
 extends Node2D
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	get_tree().change_scene_to_file("res://body/gamescene.tscn")
 
 

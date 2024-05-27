@@ -33,8 +33,8 @@ func reset():
 	
 	
 	
-	
 	for i in range(20):
+		Wave.current_wave = i
 		wave_displayer.set_frame_and_progress(i,0)
 		
 		

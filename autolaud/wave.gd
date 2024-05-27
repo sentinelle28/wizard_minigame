@@ -2,6 +2,7 @@ extends Node
 
 var is_continuing = true
 var is_playing = true
+var current_wave = 0
 var wave = [Wave_Class.new(0,0,4,0), #wave 0
 Wave_Class.new(0,0,4,0),#wave 1
 Wave_Class.new(0,0,4,0),#wave 2

@@ -3,6 +3,7 @@ extends Control
 @export_group("score")
 @export var higscore_label:Label
 @export var score_label:Label
+@export var text_label:Label
 
 @export_group("game")
 @export var audio:AudioStreamPlayer
@@ -23,12 +24,15 @@ func _process(_delta):
 		score_label.text = str(PlayerPoint.point)
 		higscore_label.text = str(PlayerPoint.highscore)
 		is_loaded = true
+		
+		if Wave.current_wave == 19:
+			text_label.text = "You win"
+		else:
+			text_label.text = "You died"
 	
 	
 
 
-func _on_texture_button_pressed():
-	reset()
 
 
 func reset():
@@ -52,3 +56,6 @@ func reset():
 	player.reset()
 	hearth_container.reset()
 	spawner.reset()
+
+func _unhandled_input(_event):
+	reset()
