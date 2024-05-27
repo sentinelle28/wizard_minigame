@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://r66hxggjnjcy"]
+[gd_scene load_steps=71 format=3 uid="uid://r66hxggjnjcy"]
 
 [ext_resource type="Script" path="res://menu/main.gd" id="1_i2tva"]
 [ext_resource type="Texture2D" uid="uid://dvfiks51pinqc" path="res://asset/Free Pixel Effects Pack/18_midnight_spritesheet.png" id="2_ij4rs"]
@@ -443,6 +443,44 @@ animations = [{
 [sub_resource type="LabelSettings" id="LabelSettings_tbrs4"]
 font_size = 20
 
+[sub_resource type="Animation" id="Animation_mnber"]
+resource_name = "blinking"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_7qte5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w42g0"]
+_data = {
+"RESET": SubResource("Animation_7qte5"),
+"blinking": SubResource("Animation_mnber")
+}
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_i2tva")
 
@@ -472,5 +510,11 @@ offset_left = 335.0
 offset_top = 147.0
 offset_right = 787.0
 offset_bottom = 493.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w42g0")
+}
+autoplay = "blinking"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
