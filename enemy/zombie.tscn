@@ -33,9 +33,11 @@ animations = [{
 size = Vector2(18, 26)
 
 [node name="zombie" instance=ExtResource("1_vwn0x")]
+health = 15
+speed = 100
 moon_weakness_mult = 1
-fire_weakness_mult = 2
-nature_weakness_mult = 0
+fire_weakness_mult = 1
+nature_weakness_mult = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 5)

@@ -33,9 +33,10 @@ animations = [{
 size = Vector2(20, 28)
 
 [node name="orc" instance=ExtResource("1_kp14b")]
+speed = 120
 moon_weakness_mult = 1
-fire_weakness_mult = 2
-elec_weakness_mult = 0
+fire_weakness_mult = 1
+elec_weakness_mult = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 4)

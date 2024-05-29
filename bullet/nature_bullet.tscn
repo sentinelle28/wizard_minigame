@@ -656,7 +656,7 @@ radius = 36.1248
 
 [node name="nature_bullet" instance=ExtResource("1_eqmvg")]
 type = "nature"
-damage = 10.0
+damage = 7.0
 SPEED = 600
 
 [node name="CollisionShape2D" parent="." index="0"]

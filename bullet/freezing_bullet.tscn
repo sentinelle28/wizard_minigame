@@ -621,8 +621,8 @@ radius = 39.8497
 
 [node name="freezing_bullet" instance=ExtResource("1_ll8rw")]
 type = "freeze"
-damage = 10.0
-SPEED = 600
+damage = 5.0
+SPEED = 630
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(0.5, 0.5)

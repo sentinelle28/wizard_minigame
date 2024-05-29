@@ -33,6 +33,10 @@ animations = [{
 size = Vector2(20, 26)
 
 [node name="CharacterBody2D" instance=ExtResource("1_3oj7w")]
+health = 20
+speed = 70
+moon_weakness_mult = 0
+fire_weakness_mult = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 2)
