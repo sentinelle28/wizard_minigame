@@ -18,6 +18,7 @@ var is_loaded = false
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if is_loaded == false:
+		
 		$AnimationPlayer.play("death_menu_open")
 		if PlayerPoint.highscore < PlayerPoint.point:
 			PlayerPoint.highscore = PlayerPoint.point
