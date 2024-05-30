@@ -617,12 +617,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f6k35"]
-radius = 39.8497
+radius = 44.0454
 
 [node name="freezing_bullet" instance=ExtResource("1_ll8rw")]
 type = "freeze"
 damage = 5.0
-SPEED = 630
+SPEED = 1800
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(0.5, 0.5)

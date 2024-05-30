@@ -652,12 +652,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e843f"]
-radius = 36.1248
+radius = 41.7998
 
 [node name="nature_bullet" instance=ExtResource("1_eqmvg")]
 type = "nature"
 damage = 7.0
-SPEED = 600
+SPEED = 1700
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(0.6, 0.6)

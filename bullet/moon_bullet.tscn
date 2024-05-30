@@ -442,12 +442,12 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w00tq"]
-radius = 38.1182
+radius = 44.1273
 
 [node name="moon_bullet" instance=ExtResource("1_5ddvx")]
 type = "moon"
 damage = 2.0
-SPEED = 700
+SPEED = 2000
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(0.6, 0.6)

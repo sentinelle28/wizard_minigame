@@ -19,6 +19,12 @@ var list_of_weakness
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	nav.target_position = player.global_position
+	var direction = global_position.direction_to(player.global_position)
+	if direction.x < 0:
+		$AnimatedSprite2D.flip_h = true
+	else:
+		$AnimatedSprite2D.flip_h = false
+	
 	Health.connect("take_dmg",repise)
 
 
@@ -36,7 +42,7 @@ func take_dmg(dmg,type):
 		immune.global_position = global_position + Vector2(0,-10)
 	
 	else:
-		health -= find_type(type)*dmg
+		health -= dmg_received
 		$AnimationPlayer.play("hurt")
 		if health<= 0:
 			PlayerPoint.add_point(point_dropped)

@@ -58,5 +58,6 @@ func reset():
 	hearth_container.reset()
 	spawner.reset()
 
-func _unhandled_input(_event):
-	reset()
+func _unhandled_input(event):
+	if event is InputEventKey or event is InputEventMouseButton:
+		reset()

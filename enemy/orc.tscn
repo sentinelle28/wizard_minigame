@@ -36,7 +36,7 @@ size = Vector2(20, 28)
 speed = 120
 moon_weakness_mult = 1
 fire_weakness_mult = 1
-elec_weakness_mult = 2
+nature_weakness_mult = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(0, 4)
@@ -45,6 +45,7 @@ shape = SubResource("RectangleShape2D_wis88")
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_tlexa")
 animation = &"run"
+autoplay = "run"
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, 4)

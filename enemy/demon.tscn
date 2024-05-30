@@ -35,7 +35,7 @@ size = Vector2(20, 26)
 [node name="CharacterBody2D" instance=ExtResource("1_3oj7w")]
 health = 20
 speed = 70
-moon_weakness_mult = 0
+moon_weakness_mult = 1
 fire_weakness_mult = 2
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -44,6 +44,7 @@ shape = SubResource("RectangleShape2D_m0cq5")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_yxlo6")
+autoplay = "default"
 frame_progress = 0.0156737
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]

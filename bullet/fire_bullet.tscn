@@ -443,7 +443,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_55417"]
-radius = 26.0768
+radius = 29.6296
 
 [sub_resource type="Animation" id="Animation_7d5qk"]
 length = 0.001
@@ -486,7 +486,7 @@ _data = {
 z_index = 1
 type = "fire"
 damage = 10.0
-SPEED = 500
+SPEED = 1000
 
 [node name="CollisionShape2D" parent="." index="0"]
 scale = Vector2(0.9, 0.9)

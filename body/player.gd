@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var current_spell:AnimatedSprite2D
 func _ready():
 	for child in get_children():
-		if child is Node2D:
+		if "shoot" in child.name:
 			spawn_location.append(child)
 
 
@@ -58,6 +58,7 @@ func match_direction():
 			return Vector2(1,0)
 		"bottom_shoot":
 			return Vector2(0,1)
+	
 		
 func sort_distance(a,b):
 	var mouse_pos = get_global_mouse_position()

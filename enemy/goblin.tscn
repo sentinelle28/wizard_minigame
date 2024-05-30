@@ -33,7 +33,9 @@ animations = [{
 size = Vector2(10, 10)
 
 [node name="goblin" instance=ExtResource("1_0r3e0")]
-health = 1
+health = 4
+elec_weakness_mult = 0
+nature_weakness_mult = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(1, 2)
@@ -41,6 +43,7 @@ shape = SubResource("RectangleShape2D_vg1vw")
 
 [node name="AnimatedSprite2D" parent="." index="2"]
 sprite_frames = SubResource("SpriteFrames_j8y6d")
+autoplay = "default"
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(1, 2)
